@@ -1,0 +1,38 @@
+default_profile: prod
+
+shared:
+  google:
+    service_account_json: "secrets/google_sa.json"
+    sheet_url: "https://docs.google.com/spreadsheets/d/1aSWMdKSESXzyDz-IDtVUmWaM5UwUSnVRdqmypmPgghk/edit?" ## aca va la url de la hoja de google sheets
+
+
+### Este es el mail que debe ser editor en la hoja de Google = gsheet-runner@export-snow-to-drive.iam.gserviceaccount.com
+
+  snowflake:
+    service_account_json: "secrets/snowflake_sa.json"
+
+  queries:
+    - file: "sql/Resultado_PG.sql"   ## aca el nombre del archivo sql y la carpeta donde esta
+      worksheet: "Resultado"    ## aca el nombre de la hoja en google sheets
+      range: "A2"             ## aca el desde que celda queres que pegue el resultado del query (se puede retir cuanto se quiera dentro del mismo archivo)
+
+    - file: "sql/Penetracion_PG.sql" 
+      worksheet: "Penetracion"
+      range: "A2"
+
+    - file: "sql/Fecha_PG.sql"
+      worksheet: "Fecha"
+      range: "A2"
+    
+    - file: "sql/Penetracion_Mensual_PG.sql"
+      worksheet: "Penetracion Mensual"
+      range: "A2"
+
+
+profiles:
+  test:
+    env: test
+
+  prod:
+    env: prod
+

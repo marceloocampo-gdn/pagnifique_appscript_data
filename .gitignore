@@ -1,0 +1,32 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+vendor/
+
+# Archivos de compilación o temporales
+dist/
+build/
+tmp/
+*.log
+
+# Entornos virtuales
+venv/
+.env
+
+# Configuraciones locales
+.env.local
+*.local.json
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+
+# Archivos de prueba
+coverage/
+
+# Carpeta secrets
+secrets/*
