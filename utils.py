@@ -13,6 +13,7 @@ import openpyxl
 import shutil
 import gspread
 from google.oauth2.service_account import Credentials
+from typing import Union
 #from mstrio.connection import Connection
 #from mstrio.project_objects import Report
 
@@ -266,7 +267,7 @@ def snowflake_login(user: str, password: str, account: str, database: str, schem
 
 def descargar_query_cond(cursor: snowflake.connector.cursor.SnowflakeCursor, 
                          query: str, 
-                         cond: str | None = None,
+                         cond: Union[str, None] = None,
                          **params) -> pd.DataFrame:
     """
     Ejecuta una consulta SQL con parámetros dinámicos.
