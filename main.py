@@ -42,7 +42,7 @@ def normalize_values(df):
 
 def main():
 
-    print("🔧 Iniciando ejecución...")
+    print("Iniciando ejecución...")
 
     # 1. CONFIG
     cfg = load_config()
@@ -55,7 +55,7 @@ def main():
     with open(cfg["snowflake"]["service_account_json"], "r", encoding="utf-8") as file:
         snow_keys = json.load(file)
 
-    print("🔌 Conectando a Snowflake...")
+    print("Conectando a Snowflake...")
     user, cursor, conn = snowflake_login(
         user=snow_keys["user"],
         password=snow_keys["password"],
@@ -72,19 +72,19 @@ def main():
         worksheet_name = q["worksheet"]
         write_range = q.get("range", "A1")
 
-        print(f"\n📥 Ejecutando SQL: {sql_file}")
+        print(f"\nEjecutando SQL: {sql_file}")
 
         df = descargar_query_cond(
             cursor=cursor,
             query=sql_file
         )
 
-        print(f"📊 Filas obtenidas: {len(df)}")
+        print(f"Filas obtenidas: {len(df)}")
 
         # Convertir valores no compatibles con Google Sheets
         df = normalize_values(df)
 
-        print(f"📤 Cargando resultados en hoja '{worksheet_name}'...")
+        print(f"Cargando resultados en hoja '{worksheet_name}'...")
         write_gsheet(
             df=df,
             spreadsheet_url=sheet_url,
@@ -94,7 +94,7 @@ def main():
             clean=False
         )
 
-    print("\n✅ TODAS las consultas fueron procesadas con éxito.")
+    print("\nTODAS las consultas fueron procesadas con éxito.")
 
 
 if __name__ == "__main__":
